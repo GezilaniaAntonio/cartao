@@ -28,7 +28,7 @@
                                 <button class="nav-link w-100 " data-bs-toggle="tab" data-bs-target="#checked">Novo
                                     Registro</button>
                             </li>
-                
+
                         </ul>
 
                         <div class="tab-content pt-3">
@@ -62,9 +62,11 @@
                                                             height="50" style="object-fit: cover; border-radius: 5px;"
                                                             alt="{{ $c->name }}">
                                                     @else
-                                                        <span class="text-muted">Sem imagem</span>
+                                                        <span class="text-muted">Sem foto</span>
                                                     @endif
                                                 </td>
+
+
                                                 <td>{{ $c->name }}</td>
                                                 <td>{{ $c->father_name }}</td>
                                                 <td>{{ $c->mother_name }}</td>
@@ -73,29 +75,31 @@
                                                 <td>{{ $c->marital_status }}</td>
                                                 <td>{{ $c->profession }}</td>
                                                 <td>{{ $c->document_number }}</td>
-                                                <td>
-                                                    <a href="{{ route('admin.cards.show', $c->id) }}"
-                                                        class="btn btn-sm btn-info text-white">
-                                                        <i class="bi bi-eye"></i>
-                                                    </a>
+
+                                                <td style="white-space: nowrap;">
+                                                    <div class="d-flex align-items-center justify-content-start gap-1">
+
+                                                        <!-- Botão Emitir -->
+                                                        <a href="{{ route('admin.generate', $c->id) }}" target="_blank"
+                                                            class="btn btn-sm btn-success" title="Emitir Cartão">
+                                                            <i class="bi bi-printer"></i>
+                                                        </a>
+                                                        <!-- Formulário Eliminar -->
+                                                        <form action="{{ route('admin.dash.destroy', $c->id) }}"
+                                                            method="POST"
+                                                            onsubmit="return confirm('Tem certeza que deseja excluir este registro?');"
+                                                            class="m-0 p-0">
+                                                            <!-- Garante que o form não ocupe espaço extra -->
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
                                                 </td>
-                                                <td>
-                                                    <a href="{{ route('admin.cards.edit', $c->id) }}"
-                                                        class="btn btn-sm btn-warning">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </a>    
-                                                </td>
-                                                <td>
-                                                    <form action="{{ route('admin.cards.destroy', $c->id) }}" method="POST"
-                                                        onsubmit="return confirm('Tem certeza que deseja excluir este registro?');"
-                                                        style="display: inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
+
 
                                             </tr>
                                         @endforeach
@@ -108,7 +112,7 @@
                                 @include('forms._formCard.index')
                             </div>
 
-                           
+
 
                         </div><!-- End tab content -->
                     </div>

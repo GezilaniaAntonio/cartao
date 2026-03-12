@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         $cards = Card::orderBy('id','desc')->get();
 
-        /* return view('admin.dash.index', compact('cards')); */
-        return response()->json($cards);
+        return view('admin.dash.index', compact('cards'));
+      
     }
 }
