@@ -1,14 +1,14 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>Geração Ativa</span></strong>. Todos os direitos reservados.
+      &copy; Copyright <strong><span>Sistema de Emissão de Cartões</span></strong>. Todos os direitos reservados.
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Desenvolvido por <a href="#">Gezilania António</a>
+      Desenvolvido por <a href="#bisnoRapido">Bizno Rápido</a>
     </div>
   </footer><!-- End Footer -->
 
