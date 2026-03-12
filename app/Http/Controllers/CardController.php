@@ -12,12 +12,12 @@ class CardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-        $response['cards'] = Card::OrderBy('id')->get();
-            return view('admin.cards.list.index', $response);
-        }
+   public function index()
+{
+    $cards = Card::orderBy('id')->get();
+
+    return view('admin.cards.list.index', compact('cards'));
+}
 
     /**
      * Show the form for creating a new resource.
