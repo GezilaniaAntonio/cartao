@@ -3,7 +3,7 @@
         <div class="card-body">
             <h5 class="card-title">Cadastro do projeto</h5>
 
-            <form class="row g-3" method="POST" action="{{ route('admin.projects.store') }}">
+            <form class="row g-3" method="POST" action="#">
 
                 @csrf
 
