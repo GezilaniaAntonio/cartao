@@ -16,6 +16,7 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image');
             $table->string('father_name');
             $table->string('mother_name');
             $table->string('date_of_birth');
@@ -29,6 +30,7 @@ class CreateCardsTable extends Migration
             $table->string('date_of_issue');
             $table->string('expiry_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
