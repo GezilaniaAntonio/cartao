@@ -25,10 +25,10 @@
                                     <button class="nav-link w-100 active" data-bs-toggle="tab" data-bs-target="#all">Todos os Registros</button>
                                 </li>
                                 <li class="nav-item flex-fill">
-                                    <button class="nav-link w-100 text-success" data-bs-toggle="tab" data-bs-target="#checked">Novo Registro</button>
+                                    <button class="nav-link w-100 " data-bs-toggle="tab" data-bs-target="#checked">Novo Registro</button>
                                 </li>
                                 {{-- <li class="nav-item flex-fill">
-                                    <button class="nav-link w-100 text-warning" data-bs-toggle="tab" data-bs-target="#pending">Emitidos</button>
+                                    <button class="nav-link w-100 text-warning" data-bs-toggle="tab" data-bs-target="#pending">Novo Registro</button>
                                 </li> --}}
                             </ul>
 
@@ -74,9 +74,7 @@
 
                                 <!-- 2. Aba: novo registro -->
                                 <div class="tab-pane fade" id="checked">
-                                    <form action="#registrar" method="post" enctype="multipart/form-data">
-                                        <input type="text" class="">
-                                    </form>
+                                    @include('forms._formCard.index')
                                 </div>
 
                                 <!-- 3. Aba: Pendente (Apenas os que NÃO fizeram check-in) -->
