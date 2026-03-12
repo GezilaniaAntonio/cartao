@@ -1,4 +1,4 @@
-<main id="main" class="main">
+
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Cadastro do projeto</h5>
@@ -38,4 +38,4 @@
 
         </div>
     </div>
-</main>
+

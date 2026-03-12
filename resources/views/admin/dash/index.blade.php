@@ -1,7 +1,7 @@
 @extends('layouts.merge.dash')
 
 @section('content')
-    <main id="main" class="main">
+    
         <div class="pagetitle">
             <h1>Emissão de Cartões</h1>
             <nav>
@@ -22,14 +22,14 @@
                             <!-- Tabs Simplificadas -->
                             <ul class="nav nav-tabs d-flex" id="participantsTab" role="tablist">
                                 <li class="nav-item flex-fill">
-                                    <button class="nav-link w-100 active" data-bs-toggle="tab" data-bs-target="#all">Todos</button>
+                                    <button class="nav-link w-100 active" data-bs-toggle="tab" data-bs-target="#all">Todos os Registros</button>
                                 </li>
                                 <li class="nav-item flex-fill">
-                                    <button class="nav-link w-100 text-success" data-bs-toggle="tab" data-bs-target="#checked">Formulário</button>
+                                    <button class="nav-link w-100 text-success" data-bs-toggle="tab" data-bs-target="#checked">Novo Registro</button>
                                 </li>
-                                <li class="nav-item flex-fill">
+                                {{-- <li class="nav-item flex-fill">
                                     <button class="nav-link w-100 text-warning" data-bs-toggle="tab" data-bs-target="#pending">Emitidos</button>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             <div class="tab-content pt-3">
@@ -40,10 +40,12 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Evento</th>
                                                 <th>Nome</th>
-                                                <th>Email</th>
-                                                <th>Check-in</th>
+                                                <th>Filhação</th>
+                                                <th>Data e local de Nascimento</th>
+                                                <th>Morada</th>
+                                                <th>E-Mail</th>
+                                                <th>Telefone</th>
                                                 <th>Ações</th>
                                             </tr>
                                         </thead>
@@ -70,22 +72,11 @@
                                     </table>
                                 </div>
 
-                                <!-- 2. Aba: Com Check-in -->
+                                <!-- 2. Aba: novo registro -->
                                 <div class="tab-pane fade" id="checked">
-                                    <table class="table datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Nome</th>
-                                                <th>Evento</th>
-                                                <th>Data Check-in</th>
-                                                <th>Ações</th>
-                                            </tr>
-                                        </thead>
-                                       <tbody>
-
-                                        </tbody>
-                                    </table>
+                                    <form action="#registrar" method="post" enctype="multipart/form-data">
+                                        <input type="text" class="">
+                                    </form>
                                 </div>
 
                                 <!-- 3. Aba: Pendente (Apenas os que NÃO fizeram check-in) -->
@@ -124,5 +115,5 @@
                 </div>
             </div>
         </section>
-    </main>
+    
 @endsection

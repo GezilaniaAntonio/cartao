@@ -1,7 +1,10 @@
 
 @include('layouts._include.admin.header')
-@include('layouts._include.admin.navbar')
+{{-- @include('layouts._include.admin.navbar') --}}
 
-@yield('content')
+<div class="container">
+
+    @yield('content')
+</div>
 
 @include('layouts._include.admin.footer')
