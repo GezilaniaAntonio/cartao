@@ -2,7 +2,7 @@
     <div class="card-body">
         <h5 class="card-title">Cadastro da Pessoa</h5>
 
-        <form class="row g-3" method="POST" action="#">
+        <form class="row g-3" method="POST" action="{{ route('card.store')}}">
             @csrf
 
             <div class="col-md-6">

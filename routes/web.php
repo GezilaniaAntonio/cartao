@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dash', function () {
-    return view('admin.dash.index');
-})->name('dash');
+Route::get('/dash', [HomeController::class, 'index'])->name('dash');
+Route::post('/registrar', [CardController::class, 'store'])->name('card.store');
