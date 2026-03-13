@@ -6,6 +6,7 @@ use App\Http\Controllers\CardController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Card;
 use App\Models\Upload;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +27,8 @@ Route::post('/admin/dash/store', [CardController::class, 'store'])->name('admin.
 Route::delete('/admin/dash/{card}', [CardController::class, 'destroy'])->name('admin.dash.destroy');
 
 Route::get('/admin/cards/generate/{id}', [CardController::class, 'cardgenerate'])->name('admin.generate');
-// routes/web.php
-/* Route::get('/debug-card-full/{id}', function($id) {
-    $card = Card::findOrFail($id);
-    $uploads = Upload::where('card_id', $card->id)->get();
-    
-    $imagePath = $uploads->where('type', 'image')->first()->path ?? null;
-    $signPath = $uploads->where('type', 'signature')->first()->path ?? null;
-    $fingerPath = $uploads->where('type', 'fingerprint')->first()->path ?? null;
-    
-    return view('debug-card-full', compact('card', 'uploads', 'imagePath', 'signPath', 'fingerPath'));
-}); */
+Route::get('/test-chinese', function () {
+    $html = '<html><body style="font-family: SimSun;">和 名称 出生日期</body></html>';
+    $pdf = PDF::loadHTML($html);
+    return $pdf->stream('teste.pdf');
+});
