@@ -39,7 +39,7 @@ public function store(Request $request)
 
     // Preparar os dados
     $data = $request->except(['_token', 'image', 'signature', 'fingerprint']);
-    
+
     // Processar e salvar a imagem principal
     if ($request->hasFile('image') && $request->file('image')->isValid()) {
         $image = $request->file('image');
@@ -82,16 +82,16 @@ public function store(Request $request)
         $fontPath = public_path('fonts/arial.ttf');
         $fontBoldPath = public_path('fonts/arialbd.ttf');
         $fontChinesePath = public_path('fonts/msyh.ttf');
-        
+
         // Fallbacks
         if (!file_exists($fontPath)) { $fontPath = 'C:/Windows/Fonts/arial.ttf'; }
         if (!file_exists($fontBoldPath)) { $fontBoldPath = 'C:/Windows/Fonts/arialbd.ttf'; }
         if (!file_exists($fontChinesePath)) { $fontChinesePath = 'C:/Windows/Fonts/msyh.ttf'; }
-        if (!file_exists($fontChinesePath)) { 
+        if (!file_exists($fontChinesePath)) {
             $fontChinesePath = 'C:/Windows/Fonts/simsun.ttc';
         }
-        if (!file_exists($fontChinesePath)) { 
-            $fontChinesePath = $fontPath; 
+        if (!file_exists($fontChinesePath)) {
+            $fontChinesePath = $fontPath;
         }
 
         $card = Card::findOrFail($id);
@@ -105,7 +105,7 @@ public function store(Request $request)
         // ==================== FRENTE DO CARTÃO ====================
         $front = Image::make(public_path('templates/frente.png'))->resize(1013, 638);
 
-      
+
 
         // --- LADO DIREITO (Foto) ---
         if ($imagePath && file_exists(public_path($imagePath))) {
@@ -119,17 +119,17 @@ public function store(Request $request)
         $y = 250;
         $lineSpace = 42;
 
-       
+
 
         // NOME
         $front->text("Nome /", $leftMargin, $y, function($f) use ($fontBoldPath) {
             $f->file($fontBoldPath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(" 名称:", $leftMargin + 50, $y, function($f) use ($fontChinesePath) {
             $f->file($fontChinesePath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(strtoupper($card->name), $dataColumn, $y, function($f) use ($fontPath) {
             $f->file($fontPath); $f->size(15); $f->color('#000');
         });
@@ -137,15 +137,15 @@ public function store(Request $request)
         // Filiação (Pai)
         $y += $lineSpace;
         $front->text("Filiação /", $leftMargin, $y, function($f) use ($fontBoldPath) {
-            $f->file($fontBoldPath); $f->size(15); $f->color('#000');
+            $f->file($fontBoldPath); $f->size(14); $f->color('#000');
         });
-        
+
         $front->text(" 之子:", $leftMargin + 60, $y, function($f) use ($fontChinesePath) {
             $f->file($fontChinesePath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(strtoupper($card->father_name), $dataColumn, $y, function($f) use ($fontPath) {
-            $f->file($fontPath); $f->size(15); $f->color('#000');
+            $f->file($fontPath); $f->size(14); $f->color('#000');
         });
 
         // Filiação (Mãe)
@@ -153,13 +153,13 @@ public function store(Request $request)
         $front->text("E /", $leftMargin, $y, function($f) use ($fontBoldPath) {
             $f->file($fontBoldPath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(" 和:", $leftMargin + 15, $y, function($f) use ($fontChinesePath) {
             $f->file($fontChinesePath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(strtoupper($card->mother_name), $dataColumn, $y, function($f) use ($fontPath) {
-            $f->file($fontPath); $f->size(15); $f->color('#000');
+            $f->file($fontPath); $f->size(14); $f->color('#000');
         });
 
         // Data de Nascimento e Local
@@ -188,13 +188,13 @@ public function store(Request $request)
         $front->text("Estado civil /", $leftMargin, $y, function($f) use ($fontBoldPath) {
             $f->file($fontBoldPath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(" 婚姻状况:", $leftMargin + 85, $y, function($f) use ($fontChinesePath) {
             $f->file($fontChinesePath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text($card->marital_status, $dataColumn, $y, function($f) use ($fontPath) {
-            $f->file($fontPath); $f->size(15); $f->color('#000');
+            $f->file($fontPath); $f->size(14); $f->color('#000');
         });
 
         // Profissão
@@ -202,28 +202,28 @@ public function store(Request $request)
         $front->text("Profissão /", $leftMargin, $y, function($f) use ($fontBoldPath) {
             $f->file($fontBoldPath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(" 职业:", $leftMargin + 90, $y, function($f) use ($fontChinesePath) {
             $f->file($fontChinesePath); $f->size(15); $f->color('#000');
         });
-        
+
         $front->text(strtoupper($card->profession), $dataColumn, $y, function($f) use ($fontPath) {
-            $f->file($fontPath); $f->size(15); $f->color('#000');
+            $f->file($fontPath); $f->size(14); $f->color('#000');
         });
 
         // Endereço
         $y += $lineSpace;
         $front->text("Endereço /", $leftMargin, $y, function($f) use ($fontBoldPath) {
-            $f->file($fontBoldPath); $f->size(15); $f->color('#000');
+            $f->file($fontBoldPath); $f->size(14); $f->color('#000');
         });
-        
-        $front->text(" 地址:", $leftMargin + 90, $y, function($f) use ($fontChinesePath) {
-            $f->file($fontChinesePath); $f->size(15); $f->color('#000');
+
+        $front->text(" 地址:", $leftMargin + 80, $y, function($f) use ($fontChinesePath) {
+            $f->file($fontChinesePath); $f->size(14); $f->color('#000');
         });
-        
+
         $shortAddress = mb_strimwidth($card->address, 0, 45, "...");
         $front->text($shortAddress, $dataColumn, $y, function($f) use ($fontPath) {
-            $f->file($fontPath); $f->size(13); $f->color('#000');
+            $f->file($fontPath); $f->size(14); $f->color('#000');
         });
 
         // --- ASSINATURA DO TITULAR ---
@@ -231,13 +231,13 @@ public function store(Request $request)
             $signature = Image::make(public_path($signPath))->resize(220, 70);
             $front->insert($signature, 'top-left', 730, 470);
         }
-        
+
         $front->text("ASSINATURA /", 760, 560, function($f) use ($fontPath) {
-            $f->file($fontPath); $f->size(12); $f->color('#000'); $f->align('left');
+            $f->file($fontPath); $f->size(14); $f->color('#000'); $f->align('left');
         });
-        
+
         $front->text(" 持有人签名", 860, 560, function($f) use ($fontChinesePath) {
-            $f->file($fontChinesePath); $f->size(12); $f->color('#000'); $f->align('left');
+            $f->file($fontChinesePath); $f->size(14); $f->color('#000'); $f->align('left');
         });
 
         // ==================== VERSO DO CARTÃO ====================
@@ -276,10 +276,10 @@ $placeOfIssueChinese = $card->place_of_issue_chinese ?? $card->place_of_issue;
 $back->text($card->place_of_issue . " aos " . date('Y.m.d', strtotime($card->date_of_issue)), $leftMargin, $y, function($f) use ($fontPath) {
     $f->file($fontPath); $f->size(14); $f->color('#000');
 });
-$back->text("/ " . $placeOfIssueChinese . ",", 290, $y, function($f) use ($fontChinesePath) { // REDUZIDO de 330 para 230
+$back->text("/ " . $placeOfIssueChinese . ",", 210, $y, function($f) use ($fontChinesePath) { // REDUZIDO de 330 para 230
     $f->file($fontChinesePath); $f->size(14); $f->color('#000');
 });
-$back->text(date('Y年m月d', strtotime($card->date_of_issue)), 230, $y, function($f) use ($fontChinesePath) { // REDUZIDO de 400 para 290
+$back->text(date('Y年m月d', strtotime($card->date_of_issue)), 290, $y, function($f) use ($fontChinesePath) { // REDUZIDO de 400 para 290
     $f->file($fontChinesePath); $f->size(14); $f->color('#000');
 });
 
@@ -369,7 +369,7 @@ $back->text("Telf: (+86 10) 65326968 – 65326839 – 65326970", 480, $y, functi
 
 $canvas = Image::canvas(2046, 638, '#ffffff');
 $canvas->insert($front, 'left', 0, 0);
-$canvas->insert($back, 'left', 1033, 0); 
+$canvas->insert($back, 'left', 1033, 0);
 
 return $canvas->response('png')
     ->header('Content-Type', 'image/png')
