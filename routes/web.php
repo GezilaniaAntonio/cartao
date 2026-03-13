@@ -21,11 +21,11 @@ use App\Models\Upload;
 Route::get('/dash', [HomeController::class, 'index'])->name('dash');
 
 
-Route::get('/admin/dash', [CardController::class, 'index'])->name('admin.dash.index');
+/* Route::get('/admin/dash', [CardController::class, 'index'])->name('admin.dash.index'); */
 Route::post('/admin/dash/store', [CardController::class, 'store'])->name('admin.dash.store');
 Route::delete('/admin/dash/{card}', [CardController::class, 'destroy'])->name('admin.dash.destroy');
 
-Route::get('/admin/cards/generate/{id}', [CardController::class, 'generateCard'])->name('admin.generate');
+Route::get('/admin/cards/generate/{id}', [CardController::class, 'cardgenerate'])->name('admin.generate');
 // routes/web.php
 /* Route::get('/debug-card-full/{id}', function($id) {
     $card = Card::findOrFail($id);
