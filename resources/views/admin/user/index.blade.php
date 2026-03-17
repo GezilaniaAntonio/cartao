@@ -110,7 +110,11 @@
 
                             <!-- 2. Aba: novo registro -->
                             <div class="tab-pane fade" id="checked">
-                            {{-- @include('forms._formCard.index') --}}
+                                <form action="{{ route('admin.users.store') }}" method="post">
+                                    @csrf 
+                                    @method('POST')
+                                    @include('forms._formUsers.index')
+                                </form>
                             </div>
 
 
