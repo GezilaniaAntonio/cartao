@@ -20,12 +20,12 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 |
 */
 
-Route::redirect('/', '/dash');
 Route::middleware('auth')->group( function () {
-
-    Route::get('/dash', [HomeController::class, 'index'])->name('dash');
-    /* Route::get('/admin/dash', [CardController::class, 'index'])->name('admin.dash.index'); */
-    Route::post('/admin/dash/store', [CardController::class, 'store'])->name('admin.dash.store');
+    
+    Route::redirect('/', '/dash');
+    Route::get('/pagina-principal', ['as' => 'dash', 'uses' => 'HomeController@index']);
+    Route::get('/cartao/salvar', ['as' => 'admin.dash.store', 'uses' => 'CardController@store']);
+    Route::get('/utilizadores', ['as' => 'admin.users.list', 'uses' => 'UserController@index']);
     Route::delete('/admin/dash/{card}', [CardController::class, 'destroy'])->name('admin.dash.destroy');
     Route::get('/admin/cards/generate/{id}', [CardController::class, 'cardgenerate'])->name('admin.generate');
     Route::get('/test-chinese', function () {
