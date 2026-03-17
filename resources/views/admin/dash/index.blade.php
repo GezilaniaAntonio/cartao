@@ -1,6 +1,7 @@
 @extends('layouts.merge.dash')
 @section('title', 'Sistema Emissão de Cartões')
 @section('content')
+
     <div class="pagetitle">
         <h1>Emissão de Cartões</h1>
         <nav>
