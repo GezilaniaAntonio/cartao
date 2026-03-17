@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <style>
-        /* Existing CSS (mantido intacto) */
+       
         @page {
             margin: 0;
         }

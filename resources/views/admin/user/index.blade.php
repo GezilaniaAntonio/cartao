@@ -17,7 +17,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Emissão de Cartões</h5>
+                        <h5 class="card-title">Utilizadores do Sistema</h5>
 
                         <!-- Tabs Simplificadas -->
                         <ul class="nav nav-tabs d-flex" id="participantsTab" role="tablist">
@@ -82,8 +82,8 @@
 
                                                         <!-- Botão Emitir -->
                                                         <a href="{{ route('admin.generate', $c->id) }}" target="_blank"
-                                                            class="btn btn-sm btn-success" title="Emitir Cartão">
-                                                            <i class="bi bi-printer"></i>
+                                                            class="btn btn-sm btn-primary" title="Emitir Cartão">
+                                                            <i class="bi bi-eye"></i>
                                                         </a>
                                                         <!-- Formulário Eliminar -->
                                                         <form action="{{ route('admin.dash.destroy', $c->id) }}"

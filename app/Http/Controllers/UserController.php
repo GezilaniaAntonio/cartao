@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $response['users'] = User::orderByDesc('created_at');
+        $response['users'] = User::orderByDesc('created_at')->get();
         return view('admin.user.index', $response);
     }
 

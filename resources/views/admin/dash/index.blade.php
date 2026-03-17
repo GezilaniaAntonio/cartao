@@ -47,8 +47,8 @@
                                             <th>Est.Civil</th>
                                             <th>Profissão</th>
                                             <th>Endereço</th>
-                                            <th>Data de entrada na China</th>
-                                            <th>Doc.Apresentado</th>
+                                           {{--  <th>Data de entrada na China</th>
+                                            <th>Doc.Apresentado</th> --}}
                                             <th>Ações</th>
                                         </tr>
                                     </thead>
@@ -69,13 +69,14 @@
 
 
                                                 <td>{{ $c->name }}</td>
-                                                <td>{{ $c->father_name }}</td>
-                                                <td>{{ $c->mother_name }}</td>
-                                                <td>{{ $c->date_of_birth }}</td>
-                                                <td>{{ $c->birth_place }}</td>
+                                                <td>{{ $c->father_name }} <br>
+                                                    {{ $c->mother_name }}
+                                                </td>
+                                                <td>{{ $c->date_of_birth }} <br>
+                                                    {{ $c->birth_place }}</td>
                                                 <td>{{ $c->marital_status }}</td>
                                                 <td>{{ $c->profession }}</td>
-                                                <td>{{ $c->document_number }}</td>
+                                                <td>{{ $c->address }}</td>
 
                                                 <td style="white-space: nowrap;">
                                                     <div class="d-flex align-items-center justify-content-start gap-1">
