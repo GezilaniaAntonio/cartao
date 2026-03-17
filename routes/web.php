@@ -20,12 +20,19 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 |
 */
 
-Route::redirect('/', '/dash');
 Route::middleware('auth')->group( function () {
-
-    Route::get('/dash', [HomeController::class, 'index'])->name('dash');
-    /* Route::get('/admin/dash', [CardController::class, 'index'])->name('admin.dash.index'); */
-    Route::post('/admin/dash/store', [CardController::class, 'store'])->name('admin.dash.store');
+    
+    Route::redirect('/', '/dash');
+    Route::get('/pagina-principal', ['as' => 'dash', 'uses' => 'HomeController@index']);
+    Route::get('/cartao/salvar', ['as' => 'admin.dash.store', 'uses' => 'CardController@store']);
+    //inicio user routes
+    Route::get('/utilizadores', ['as' => 'admin.users.list', 'uses' => 'UserController@index']);
+    Route::post('/utilizadores/salvar', ['as' => 'admin.users.store', 'uses' => 'UserController@store']);
+    Route::get('/utilizadores/{id}/editar', ['as' => 'admin.users.edit', 'uses' => 'UserController@edit']);
+    Route::get('/utilizadores/{id}/detalhes', ['as' => 'admin.users.show', 'uses' => 'UserController@show']);
+    Route::put('/utilizadores/{id}/atualizar', ['as' => 'admin.users.update', 'uses' => 'UserController@update']);
+    Route::delete('/utilizadores/{id}/apagar', ['as' => 'admin.users.destroy', 'uses' => 'UserController@destroy']);
+    //fim users routes
     Route::delete('/admin/dash/{card}', [CardController::class, 'destroy'])->name('admin.dash.destroy');
     Route::get('/admin/cards/generate/{id}', [CardController::class, 'cardgenerate'])->name('admin.generate');
     Route::get('/test-chinese', function () {
