@@ -193,7 +193,7 @@
 
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.users.list') }}">
-                            <i class="bi bi-gear"></i>
+                            <i class="bi bi-users"></i>
                             <span>Utilizadores</span>
                         </a>
                     </li>
